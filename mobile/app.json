@@ -1,0 +1,57 @@
+{
+  "expo": {
+    "name": "MyBigBazaar",
+    "slug": "mybigbazzar",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0078FF"
+    },
+    "androidNavigationBar": {
+      "backgroundColor": "#0078FF",
+      "barStyle": "light-content"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#0078FF",
+      "barStyle": "light-content",
+      "translucent": true
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.raidening.mybigbazzar",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FFFFFF",
+        "foregroundImage": "./assets/adaptive-icon.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.raidening.mybigbazzar"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#0078FF"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "51122022-fb07-4f23-8e5d-1e8638a29476"
+      }
+    }
+  }
+}

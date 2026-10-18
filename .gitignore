@@ -1,0 +1,70 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Environment variables (Protect secrets)
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.*.local
+*.env
+!.env.example
+!.env.*.example
+
+# Production / Build outputs
+dist/
+dist-web/
+dist-ssr/
+build/
+out/
+.next/
+
+# Archives & binaries
+*.zip
+*.tar.gz
+*.tgz
+*.apk
+*.aab
+*.ipa
+*.jsbundle
+
+# Android & Gradle
+.gradle/
+build/
+local.properties
+.cxx/
+*.iml
+*.hprof
+app/src/main/java/inline/
+
+# Expo
+.expo/
+.expo-shared/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# IDE & OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Backend uploads
+api/public/uploads/*
+!api/public/uploads/.gitkeep
