@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { STORE_DOWNLOAD_CONFIG } from '../../../../packages/shared/content.js';
+import { STORE_DOWNLOAD_CONFIG } from '../../../packages/shared/content.js';
 
 export default function AppDownload() {
   const [phoneNumber, setPhoneNumber] = useState('');

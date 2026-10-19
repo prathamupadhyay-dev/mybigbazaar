@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PageHeader from '../components/ui/PageHeader';
-import { LEGAL_DOCUMENTS } from '../../../../packages/shared/content.js';
+import { LEGAL_DOCUMENTS } from '../../../packages/shared/content.js';
 import { apiGet, apiPut } from '../utils/api.js';
 import { STOREFRONT_URL } from '../config.js';
 

@@ -1,0 +1,12 @@
+{
+  "name": "@my-big-bazaar/validation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "exports": "./index.js",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@my-big-bazaar/shared": "workspace:*",
+    "@my-big-bazaar/types": "workspace:*"
+  }
+}

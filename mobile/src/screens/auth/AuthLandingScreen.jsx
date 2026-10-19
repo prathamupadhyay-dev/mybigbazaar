@@ -13,10 +13,49 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useApp } from '../../context/AppContext';
 
 export default function AuthLandingScreen() {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
+  const { updateUser, setAuthenticated, executePendingAction } = useApp();
+
+  const handleDemoLogin = async () => {
+    const demoUser = {
+      _id: 'demo-user-001',
+      id: 'demo-user-001',
+      fullName: 'Demo Guest',
+      name: 'Demo Guest',
+      email: 'guest.demo@mybigbazaar.com',
+      phone: '+91 98765 43210',
+      phoneNumber: '+91 98765 43210',
+      role: 'user',
+      walletBalance: 2500,
+      isElite: true,
+      city: 'Indore',
+      state: 'Madhya Pradesh',
+      address: 'Plot 45, Vijay Nagar, Indore, Madhya Pradesh 452010',
+    };
+
+    try {
+      await AsyncStorage.setItem('@bigbazaar_auth_token', 'demo-mobile-token-' + Date.now());
+      await AsyncStorage.setItem('@bigbazaar_user_profile', JSON.stringify(demoUser));
+      await AsyncStorage.setItem('@has_selected_location', 'true');
+      await AsyncStorage.setItem('@location_permission_granted', 'true');
+    } catch (e) {}
+
+    updateUser(demoUser);
+    setAuthenticated(true);
+
+    if (executePendingAction) {
+      executePendingAction();
+    }
+
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'Main', params: { screen: 'Home' } }],
+    });
+  };
 
   const handleClose = async () => {
     try {
@@ -141,6 +180,16 @@ export default function AuthLandingScreen() {
         >
           <Ionicons name="mail-outline" size={19} color="#FFFFFF" style={{ marginRight: 8 }} />
           <Text style={styles.emailButtonText}>Login with Email</Text>
+        </TouchableOpacity>
+
+        {/* Demo Mode Action: Instant Preview Without Backend */}
+        <TouchableOpacity
+          onPress={handleDemoLogin}
+          activeOpacity={0.85}
+          style={styles.demoButton}
+        >
+          <Ionicons name="sparkles-outline" size={18} color="#002F34" style={{ marginRight: 8 }} />
+          <Text style={styles.demoButtonText}>Demo Login (Explore App)</Text>
         </TouchableOpacity>
 
         {/* Sign Up Link: Under Login with Email */}
@@ -312,6 +361,32 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 15,
     fontWeight: '600',
+    letterSpacing: -0.2,
+  },
+  demoButton: {
+    height: 52,
+    borderRadius: 16,
+    backgroundColor: '#FFB800',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 16,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.15,
+        shadowRadius: 8,
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
+  },
+  demoButtonText: {
+    color: '#002F34',
+    fontSize: 15,
+    fontWeight: '700',
     letterSpacing: -0.2,
   },
   signupButton: {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
-import { LEGAL_DOCUMENTS, BRAND_CONFIG } from '../../../../packages/shared/content.js';
+import { LEGAL_DOCUMENTS, BRAND_CONFIG } from '../../../packages/shared/content.js';
 import { loadCmsDocument, renderCmsMarkdown } from '../utils/cmsUtils.jsx';
 
 export default function PrivacyPage() {

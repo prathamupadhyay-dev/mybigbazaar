@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { FAQS_CATALOG } from '../../../../packages/shared/content.js';
+import { FAQS_CATALOG } from '../../../packages/shared/content.js';
 import PageHeader from '../components/ui/PageHeader';
 
 const CATEGORIES = [

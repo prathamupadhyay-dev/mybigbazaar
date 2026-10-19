@@ -1,0 +1,11 @@
+{
+  "name": "@my-big-bazaar/shared",
+  "version": "1.0.0",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./content": "./content.js"
+  },
+  "type": "module",
+  "private": true
+}

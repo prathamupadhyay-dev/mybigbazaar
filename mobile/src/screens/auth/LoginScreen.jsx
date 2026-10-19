@@ -218,6 +218,26 @@ export const LoginScreen = () => {
     navigation.navigate('Signup');
   };
 
+  const handleDemoLogin = async () => {
+    const demoUser = {
+      _id: 'demo-user-001',
+      id: 'demo-user-001',
+      fullName: 'Demo Guest',
+      name: 'Demo Guest',
+      email: 'guest.demo@mybigbazaar.com',
+      phone: '+91 98765 43210',
+      phoneNumber: '+91 98765 43210',
+      role: 'user',
+      walletBalance: 2500,
+      isElite: true,
+      city: 'Indore',
+      state: 'Madhya Pradesh',
+      address: 'Plot 45, Vijay Nagar, Indore, Madhya Pradesh 452010',
+    };
+    await saveAuthToken('demo-mobile-token-' + Date.now());
+    await completeLogin(demoUser);
+  };
+
   return (
     <ScreenContainer noPadding>
       <KeyboardAvoidingView
@@ -394,6 +414,15 @@ export const LoginScreen = () => {
                   <Text style={styles.socialBtnText}>Continue with Apple</Text>
                 </>
               )}
+            </TouchableOpacity>
+
+            {/* Demo Login Button */}
+            <TouchableOpacity
+              style={styles.demoLoginBtn}
+              onPress={handleDemoLogin}
+              disabled={Boolean(socialLoading) || isLoading}>
+              <Ionicons name="sparkles-outline" size={19} color="#C2410C" />
+              <Text style={styles.demoLoginBtnText}>Demo Login (Explore App)</Text>
             </TouchableOpacity>
           </View>
 
@@ -593,6 +622,24 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: Colors.textPrimary,
     marginLeft: Spacing.sm,
+  },
+  demoLoginBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFF7ED',
+    borderRadius: Radii.button || 8,
+    paddingVertical: 14,
+    minHeight: 48,
+    borderWidth: 1.5,
+    borderColor: '#C2410C',
+    marginBottom: Spacing.md,
+    gap: 8,
+  },
+  demoLoginBtnText: {
+    ...Typography.bodyBold,
+    fontSize: 15,
+    color: '#C2410C',
   },
   signupContainer: {
     flexDirection: 'row',

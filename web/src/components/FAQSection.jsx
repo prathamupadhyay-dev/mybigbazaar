@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { FAQS_CATALOG, BRAND_CONFIG } from '../../../../packages/shared/content.js';
+import { FAQS_CATALOG, BRAND_CONFIG } from '../../../packages/shared/content.js';
 
 const CATEGORIES = [
   'All',

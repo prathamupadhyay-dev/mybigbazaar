@@ -96,6 +96,36 @@ export default function Login({ onLogin }) {
     }
   }
 
+  const handleDemoLogin = () => {
+    setErrorMsg('')
+    const demoToken = 'demo-admin-token-' + Date.now()
+    const demoAdmin = {
+      _id: 'demo-admin-usr-01',
+      id: 'demo-admin-usr-01',
+      fullName: 'Demo Administrator',
+      name: 'Demo Administrator',
+      email: 'admin.demo@mybigbazaar.com',
+      role: 'super_admin',
+      roles: ['super_admin', 'admin'],
+      status: 'Active',
+      permissions: ['all']
+    }
+
+    localStorage.setItem('adminToken', demoToken)
+    localStorage.setItem('token', demoToken)
+    localStorage.setItem('af_admin_token', demoToken)
+    localStorage.setItem('admin_user', JSON.stringify(demoAdmin))
+    localStorage.setItem('adminName', 'Demo Administrator')
+    localStorage.setItem('adminEmail', 'admin.demo@mybigbazaar.com')
+    localStorage.setItem('adminRole', 'super_admin')
+    localStorage.setItem('admin_offline_mode', 'true')
+
+    showToast('Demo administrator session initialized. Viewing all screens.', 'success')
+    if (onLogin) {
+      onLogin(demoToken, demoAdmin)
+    }
+  }
+
   const siteLogo = typeof window !== 'undefined' ? localStorage.getItem('site_logo') : null
 
   return (
@@ -322,6 +352,54 @@ export default function Login({ onLogin }) {
           <span>{loading ? 'Signing in...' : 'Sign In'}</span>
           <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
         </button>
+
+        {/* Divider */}
+        <div style={{ display: 'flex', alignItems: 'center', margin: '8px 0 0 0', gap: '12px' }}>
+          <div style={{ flex: 1, height: '1px', backgroundColor: 'var(--color-border, #E7E5E4)' }} />
+          <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--color-text-metadata, #78716C)', fontWeight: 600 }}>
+            Or Explore Without Backend
+          </span>
+          <div style={{ flex: 1, height: '1px', backgroundColor: 'var(--color-border, #E7E5E4)' }} />
+        </div>
+
+        {/* Demo Admin Access Button */}
+        <button
+          type="button"
+          onClick={handleDemoLogin}
+          disabled={loading}
+          style={{
+            width: '100%',
+            height: '42px',
+            backgroundColor: 'transparent',
+            color: '#C2410C',
+            border: '1.5px solid #C2410C',
+            borderRadius: '8px',
+            fontSize: '13.5px',
+            fontWeight: 600,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            transition: 'all 150ms ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#FFF7ED'
+            e.currentTarget.style.borderColor = '#9A3412'
+            e.currentTarget.style.color = '#9A3412'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'transparent'
+            e.currentTarget.style.borderColor = '#C2410C'
+            e.currentTarget.style.color = '#C2410C'
+          }}
+        >
+          <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>shield_person</span>
+          <span>Demo Admin Access</span>
+        </button>
+        <p style={{ fontSize: '11.5px', color: 'var(--color-text-metadata, #78716C)', textAlign: 'center', margin: '-4px 0 0 0' }}>
+          Instant preview access — explore all console screens
+        </p>
       </form>
     </div>
   )

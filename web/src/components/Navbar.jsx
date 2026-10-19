@@ -154,7 +154,7 @@ export default function Navbar() {
         {/* Actions (Download App, Watchlist, Cart, Notifs, Profile) */}
         <div className="nav-actions">
           {/* Download App Button */}
-          <a href="/#download" className="btn-post-ad" title="Download MyBigBazaar Mobile App">
+          <a href="/downloads/mybigbazaar-v1.0.0.apk" download="MyBigBazaar-v1.0.0.apk" className="btn-post-ad" title="Download MyBigBazaar Android Application (APK)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
@@ -226,20 +226,20 @@ export default function Navbar() {
                     <span className="nav-user-role-badge">{currentUser.role || 'Member'}</span>
                   </div>
                   <Link to="/account" className="nav-user-menu-item">
-                    👤 My Account &amp; Profile
+                    My Account &amp; Profile
                   </Link>
                   <Link to="/account?tab=ads" className="nav-user-menu-item">
-                    🏷️ My Posted Ads ({currentUser.totalListings || 0})
+                    My Posted Ads ({currentUser.totalListings || 0})
                   </Link>
                   <Link to="/orders" className="nav-user-menu-item">
-                    📦 My Orders &amp; Bookings
+                    My Orders &amp; Bookings
                   </Link>
                   <Link to="/chat" className="nav-user-menu-item">
-                    💬 Chats &amp; Offers
+                    Chats &amp; Offers
                   </Link>
                   <div className="nav-user-menu-divider" />
                   <button type="button" onClick={logout} className="nav-user-menu-item nav-user-logout">
-                    🚪 Sign Out
+                    Sign Out
                   </button>
                 </div>
               )}
@@ -294,35 +294,35 @@ export default function Navbar() {
               <button type="submit" className="btn-primary mobile-search-btn">Search</button>
             </form>
 
-            <a href="/#download" className="mobile-link" style={{ color: 'var(--brand-orange)', fontWeight: '700' }} onClick={() => setMobileMenuOpen(false)}>
-              📲 Download Mobile App
+            <a href="/downloads/mybigbazaar-v1.0.0.apk" download="MyBigBazaar-v1.0.0.apk" className="mobile-link" style={{ color: 'var(--brand-orange)', fontWeight: '700' }} onClick={() => setMobileMenuOpen(false)}>
+              Download Mobile App (APK)
             </a>
             <a href="/#app-features" className="mobile-link" onClick={() => setMobileMenuOpen(false)}>
-              ✨ What The App Does (Features)
+              What The App Does (Features)
             </a>
             <a href="/#how-it-works" className="mobile-link" onClick={() => setMobileMenuOpen(false)}>
-              ⚡ How It Works (Buy, Sell &amp; Book)
+              How It Works (Buy, Sell &amp; Book)
             </a>
             <Link to="/safety" className="mobile-link" onClick={() => setMobileMenuOpen(false)}>
-              🛡️ Trust &amp; Safety Guidelines
+              Trust &amp; Safety Guidelines
             </Link>
             <Link to="/favorites" className="mobile-link" onClick={() => setMobileMenuOpen(false)}>
-              ❤️ Watchlist ({watchlist.length})
+              Watchlist ({watchlist.length})
             </Link>
             <Link to="/cart" className="mobile-link" onClick={() => setMobileMenuOpen(false)}>
-              🛍️ Service Cart ({totalCartCount})
+              Service Cart ({totalCartCount})
             </Link>
             <Link to="/chat" className="mobile-link" onClick={() => setMobileMenuOpen(false)}>
-              💬 Chats &amp; Offers
+              Chats &amp; Offers
             </Link>
             <Link to="/orders" className="mobile-link" onClick={() => setMobileMenuOpen(false)}>
-              📋 My Orders &amp; Bookings
+              My Orders &amp; Bookings
             </Link>
             <Link to="/account" className="mobile-link" onClick={() => setMobileMenuOpen(false)}>
-              👤 Profile &amp; Account
+              Profile &amp; Account
             </Link>
             <Link to="/partner" className="mobile-link mobile-partner-link" onClick={() => setMobileMenuOpen(false)}>
-              💼 Partner With Us
+              Partner With Us
             </Link>
 
             {isAuthenticated ? (

@@ -156,15 +156,25 @@ export const apiFetch = async (endpoint, options = {}) => {
 
     clearTimeout(timeoutId);
 
-    // 401 Interceptor: Clear session on expired/invalid auth
+    // 401 Interceptor: Clear session on expired/invalid auth (except demo sessions)
     if (response.status === 401) {
-      console.log('[API_CLIENT] Session expired or unauthorized (HTTP 401). Clearing stored session.');
-      await clearAuthSession();
+      if (!token?.startsWith('demo-')) {
+        console.log('[API_CLIENT] Session expired or unauthorized (HTTP 401). Clearing stored session.');
+        await clearAuthSession();
+      }
     }
 
     return response;
   } catch (error) {
     clearTimeout(timeoutId);
+
+    // In demo preview mode, return a graceful response so users can inspect all screens
+    if (token?.startsWith('demo-')) {
+      return new Response(JSON.stringify({ success: true, data: [], items: [], count: 0 }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
 
     if (error.name === 'AbortError') {
       throw new Error(`Request timed out after ${timeoutMs / 1000}s connecting to server.`);
